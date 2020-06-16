@@ -18,20 +18,16 @@ function Nav() {
       </button>
       <div className="collapse navbar-collapse" id="navbarNav">
         <ul className="navbar-nav">
-          <Link to={"/"}>
-            <li className="nav-item ">
-              <a className="nav-link" href="#">
-                Search
-              </a>
-            </li>
-          </Link>
-          <Link to={"/saved"}>
-            <li className="nav-item ">
-              <a className="nav-link" href="#">
-                Saved Books
-              </a>
-            </li>
-          </Link>
+          <li className="nav-item ">
+            <Link className="nav-link" to={"/"}>
+              Search
+            </Link>
+          </li>
+          <li className="nav-item ">
+            <Link className="nav-link" to={"/saved"}>
+              Saved Books
+            </Link>
+          </li>
         </ul>
       </div>
     </nav>

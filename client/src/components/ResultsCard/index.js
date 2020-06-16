@@ -1,35 +1,51 @@
 import React from "react";
+import "./style.css";
 
-function ResultsCard() {
-  return (
-    <div className="col mb-4">
-      <div className="card">
-        <div class="view overlay">
-          <img
-            class="card-img-top"
-            src="https://mdbootstrap.com/img/Photos/Others/images/16.jpg"
-            alt="Card image cap"
-          />
-          <a href="#!">
-            <div class="mask rgba-white-slight"></div>
-          </a>
-        </div>
+class ResultsCard extends React.Component {
+  constructor(props) {
+    super(props);
 
-        <div class="card-body">
-          <h4 class="card-title">Card title</h4>
+    this.state = {
+      bookData: {
+        title: props.title,
+        description: props.desc,
+        image: props.imgSrc,
+        authors: props.authors,
+        link: props.link,
+      },
+    };
+  }
 
-          <p class="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
-          </p>
+  handleClick = (event) => {
+    event.preventDefault();
+    this.props.handleSave(this.state.bookData);
+  };
 
-          <button type="button" class="btn btn-light-blue btn-md">
-            Read more
-          </button>
+  render() {
+    const { title, imgSrc, authors, desc, link } = this.props;
+    return (
+      <div className="col mb-2">
+        <div className="view overlay zoom rounded">
+          <img src={imgSrc} alt="zoom" />
+          <div className="mask flex-center waves-effect waves-light">
+            <div className="card h-100 w-100">
+              <div className="card-body">
+                <h5 className="card-title text-white">{title}</h5>
+                {authors.map((author) => (
+                  <p className="card-text text-light">{author}</p>
+                ))}
+              </div>
+              <div className="card-body ">
+                <a className="btn btn-sm  btn-pink" onClick={this.handleClick}>
+                  <i className="fas fa-clone left"></i> Save
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default ResultsCard;

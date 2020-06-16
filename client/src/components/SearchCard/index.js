@@ -3,19 +3,22 @@ import { Container, Row, Col } from "../Grid";
 import SearchBar from "../SearchBar";
 import ResultsDeck from "../ResultsDeck";
 
-function SearchCard() {
+function SearchCard({ handleSearch, searchResults, handleSave }) {
   return (
     <Container>
       <div className="card stylish-color-dark p-2">
         <div className="card-body">
           <Row>
             <Col size="md-12">
-              <SearchBar></SearchBar>
+              <SearchBar onClick={handleSearch} />
             </Col>
           </Row>
           <Row>
             <Col size="md-12">
-              <ResultsDeck />
+              <ResultsDeck
+                searchResults={searchResults}
+                handleSave={handleSave}
+              />
             </Col>
           </Row>
         </div>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import API from "../utils/API";
+import BooksCard from "../components/BooksCard";
 
 class Books extends Component {
   state = {
@@ -17,7 +18,7 @@ class Books extends Component {
   };
 
   render() {
-    return <></>;
+    return <BooksCard books={this.state.books}></BooksCard>;
   }
 }
 

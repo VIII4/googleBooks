@@ -20,6 +20,7 @@ class Search extends Component {
           temp.push(volume.volumeInfo);
         });
         this.setState({ searchedBooks: temp });
+        console.log(temp);
       })
       .then()
       .catch((err) => console.log(err));

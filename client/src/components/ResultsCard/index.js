@@ -1,24 +1,33 @@
 import React from "react";
+import { Row, Col, Container } from "../Grid";
 import "./style.css";
 
 class ResultsCard extends React.Component {
   constructor(props) {
     super(props);
-
+    let { title, imgSrc, authors, desc, link } = this.props;
     this.state = {
       bookData: {
-        title: props.title,
-        description: props.desc,
-        image: props.imgSrc,
-        authors: props.authors,
-        link: props.link,
+        title: title,
+        image: imgSrc,
+        authors: authors,
+        description: desc,
+        link: link,
       },
     };
   }
 
   handleClick = (event) => {
     event.preventDefault();
-    this.props.handleSave(this.state.bookData);
+    let { title, imgSrc, authors, desc, link } = this.props;
+    const data = {
+      title: title,
+      image: imgSrc,
+      authors: authors,
+      description: desc,
+      link: link,
+    };
+    this.props.handleSave(data);
   };
 
   render() {
@@ -36,9 +45,22 @@ class ResultsCard extends React.Component {
                 ))}
               </div>
               <div className="card-body ">
-                <a className="btn btn-sm  btn-pink" onClick={this.handleClick}>
-                  <i className="fas fa-clone left"></i> Save
-                </a>
+                <Row>
+                  <Col size="md-6">
+                    <button
+                      type="button"
+                      className="btn btn-sm rounded btn-success"
+                      onClick={this.handleClick}
+                    >
+                      Save
+                    </button>
+                  </Col>
+                  <Col size="md-6">
+                    <button type="button" class="btn btn-sm rounded btn-light">
+                      View
+                    </button>
+                  </Col>
+                </Row>
               </div>
             </div>
           </div>

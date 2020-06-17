@@ -23,7 +23,7 @@ export default {
     return axios.get(
       "https://www.googleapis.com/books/v1/volumes?q=" +
         query +
-        "&maxResults=16"
+        "&maxResults=20"
     );
   },
 };

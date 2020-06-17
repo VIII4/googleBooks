@@ -41,8 +41,11 @@ class ResultsCard extends React.Component {
               <div className="card-body">
                 <h5 className="card-title text-white">{title}</h5>
                 {authors.map((author) => (
-                  <p className="card-text text-light">{author}</p>
+                  <p className="card-text text-light">
+                    <em>{author}</em>
+                  </p>
                 ))}
+                <p className="mt-1 card-text text-light">{desc}</p>
               </div>
               <div className="card-body ">
                 <Row>
@@ -56,9 +59,9 @@ class ResultsCard extends React.Component {
                     </button>
                   </Col>
                   <Col size="md-6">
-                    <button type="button" class="btn btn-sm rounded btn-light">
+                    <a href={link} class="btn btn-sm btn-light">
                       View
-                    </button>
+                    </a>
                   </Col>
                 </Row>
               </div>

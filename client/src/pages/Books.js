@@ -17,8 +17,26 @@ class Books extends Component {
       .catch((err) => console.log(err));
   };
 
+  deleteBook = (bookId) => {
+    API.deleteBook(bookId)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err))
+      .finally(() => {
+        this.loadBooks();
+      });
+  };
+
+  handleDelete = (bookId) => {
+    this.deleteBook(bookId);
+  };
+
   render() {
-    return <BooksCard books={this.state.books}></BooksCard>;
+    return (
+      <BooksCard
+        books={this.state.books}
+        handleDelete={this.handleDelete}
+      ></BooksCard>
+    );
   }
 }
 

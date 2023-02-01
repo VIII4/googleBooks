@@ -4,7 +4,7 @@ import SavedCard from "../SavedCard";
 function SavedDeck({ books, handleDelete }) {
   return (
     <div className="row row-cols-2 row-cols-md-4 ">
-      {books.map((book) => {
+      {books.map((book, i) => {
         let desc = book.description
           ? book.description
           : "No Description Available";
@@ -16,6 +16,7 @@ function SavedDeck({ books, handleDelete }) {
 
         return (
           <SavedCard
+            key={i + book._id}
             title={book.title}
             desc={desc}
             imgSrc={book.image}

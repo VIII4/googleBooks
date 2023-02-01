@@ -11,8 +11,8 @@ function SavedCard({ title, imgSrc, authors, desc, link, id, handleDelete }) {
           <div className="card h-100 w-100">
             <div className="card-body">
               <h5 className="card-title text-white">{title}</h5>
-              {authors.map((author) => (
-                <p className="card-text text-light">
+              {authors.map((author, i) => (
+                <p key={i + author} className="card-text text-light">
                   <em>{author}</em>
                 </p>
               ))}
@@ -21,14 +21,14 @@ function SavedCard({ title, imgSrc, authors, desc, link, id, handleDelete }) {
             <div className="card-body">
               <Row>
                 <Col size="md-6">
-                  <a href={link} class="btn btn-sm btn-light">
+                  <a href={link} className="btn btn-sm btn-light">
                     View
                   </a>
                 </Col>
                 <Col size="md-6">
                   <button
                     type="button"
-                    class="btn btn-sm rounded btn-danger"
+                    className="btn btn-sm rounded btn-danger"
                     onClick={() => {
                       handleDelete(id);
                     }}

@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 
 const mongoose = require("mongoose");
@@ -16,11 +17,22 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 app.use(routes);
 
-// Connect to the Mongo DB
-mongoose.connect(
-  process.env.MONGODB_URI ||
-    "mongodb://user:password1234@ds149221.mlab.com:49221/heroku_pv9z80k3"
-);
+//let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/googleBooks";
+let MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/googleBooks";
+// connect to mongoDB database
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+mongoose.connection.on("connected", () => {
+  console.log("Mongoose is connected");
+});
+
+// on mongoose error
+mongoose.connection.on("error", (err) => {
+  console.log("Database error occurred", err);
+});
 
 // Start the API server
 app.listen(PORT, function () {
